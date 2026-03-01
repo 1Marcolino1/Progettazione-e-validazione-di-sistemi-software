@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Tracking status</h2>
+<p th:text="${shipment.isTracked} ? 'Tracking enabled' : 'Tracking disabled'"></p>
+
+<form th:action="@{/toggleTracking}"  method="post">
+    <input type="hidden" name="id" th:value="${shipment.id}">
+    <button type="submit"
+            th:text="${shipment.tracked} ? 'Disable tracking' : 'Enable tracking'">
+    </button>
+</form>
+
+<a href="/web/shipments"> Show the list </a>
+
+</body>
+</html>

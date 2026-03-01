@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title></head>
+<body>
+
+<h1>Shipment Details</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <td th:text="${shipment.id}">1</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td th:text="${shipment.name}">Sample Shipment</td>
+    </tr>
+    <tr>
+        <th>Tracked</th>
+        <td th:text="${shipment.tracked}">true</td>
+    </tr>
+</table>
+<a href="/web/shipments"> Show the list </a>
+</body>
+</html>

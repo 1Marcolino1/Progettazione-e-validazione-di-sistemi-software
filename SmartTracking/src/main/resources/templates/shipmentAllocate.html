@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Device Allocation</h2>
+
+<form th:action="@{/web/allocateAll}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Device ID</th>
+            <th>Device Name</th>
+            <th>Select Shipment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="device : ${devices}">
+            <td th:text="${device.id}"></td>
+            <td th:text="${device.name}"></td>
+            <td>
+                <input type="hidden" name="deviceIds" th:value="${device.id}" />
+                <select name="shipmentIds">
+                    <option th:value="${-1}" th:selected="${device.shipment == null}">--None--</option>
+                    <option th:each="shipment : ${shipments}"
+                            th:value="${shipment.id}"
+                            th:text="${shipment.id}"
+                            th:selected="${device.shipment != null} ? (shipment.id == device.shipment.id) : false">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit">Save All</button>
+</form>
+
+
+
+</body>
+</html>

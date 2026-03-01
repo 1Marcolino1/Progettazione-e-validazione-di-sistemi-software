@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title></head>
+<body>
+        <h1>Shipment list</h1>
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tracking status</th>
+                <th>Associated Devices </th>
+                <th>Modify Tracking</th>
+                <th>Details</th>
+                <th>Delete Shipment</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="shipment: ${shipments}">
+                <td th:text="${shipment.id}"> <b>10 </b></td>
+                <td th:text="${shipment.isTracked}">false</td>
+                <td>
+                        <p th:each="device : ${shipment.devices}"
+                            th:text="${device.id}">0</p>
+                </td>
+                <td><a href="/web/tracking?id=10" th:href="@{/web/tracking(id=${shipment.id})}">change tracking</a></td>
+                <td><a href="/web/read?id=10" th:href="@{/web/read(id=${shipment.id})}">show details</a></td>
+                <td><a href="/web/delete?id=10" th:href="@{/web/delete(id=${shipment.id})}">delete shipment</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="/web/shipmentAllocate"> Associate a device to a shipment </a>
+        <br>
+        <a href="/web/newShipment">Add new shipment</a>
+        <br>
+        <a href="/profile">Return to profile</a>
+    </body>
+</html>
